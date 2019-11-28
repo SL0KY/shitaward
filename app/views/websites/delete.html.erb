@@ -1,0 +1,13 @@
+<h2>
+  Suppression du site : <%= @website.name %>
+</h2>
+
+<%= form_for @website do |f| %>
+
+
+
+  <p>
+    <%= f.submit 'Supprimer le site' %>
+  </p>
+
+<% end %>

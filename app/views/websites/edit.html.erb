@@ -1,0 +1,13 @@
+<h2>
+  Modification du site : <%= @website.name %>
+</h2>
+
+<%= form_for @website do |f| %>
+
+  <%= render partial: 'fields', locals: { form: f } %>
+
+  <p>
+    <%= f.submit 'Modifier le site' %>
+  </p>
+
+<% end %>

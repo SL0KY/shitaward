@@ -1,0 +1,12 @@
+<%= link_to 'Ajouter un site', '/websites/new', :class => "btn" %>
+<ul class="website_ul">
+  <% @websites.each do |website| %>
+    <li class="website_li">
+      <%= website.name %>
+      <div>
+        <%= link_to 'Edition', edit_website_url(website), :class => "btn" %>
+        <%= link_to 'Supprimer', website_path(website), :confirm  => 'Es tu sûr ?', method: :delete, :class => "btn" %>
+      </div>
+    </li>
+  <% end %>
+</ul>

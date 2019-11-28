@@ -1,0 +1,13 @@
+<h2>
+  Ajout d'un site web moche
+</h2>
+
+<%= form_for @website do |f| %>
+
+  <%= render partial: 'fields', locals: { form: f } %>
+
+  <p>
+    <%= f.submit "Ajouter un nouveau site" %>
+  </p>
+
+<% end %>
