@@ -1,0 +1,13 @@
+<%= form_tag 'sign_in' do %>
+    <p>
+        <%= label_tag 'session[email]', 'email :' %>
+        <%= email_field_tag 'session[email]' %>
+    </p>
+    <p>
+        <%= label_tag 'session[password]', 'password :' %>
+        <%= password_field_tag 'session[password]' %>
+    </p>
+    <p>
+        <%= submit_tag 'Se connecter' %>
+    </p>
+<% end %>
