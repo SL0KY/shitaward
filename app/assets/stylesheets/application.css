@@ -16,13 +16,10 @@
 
  .website_li{
      border: 1px solid gray;
-     padding: 10px 20px;
+     padding: 20px 20px;
      border-radius: 3px;
      margin-bottom: 10px;
      list-style-type: none;
- }
- .website_ul{
-     width: 500px;
  }
  .btn{
      color: #fff;
@@ -31,6 +28,19 @@
      text-decoration: none;
      border-radius: 3px;
  }
- .website_li div{
-     float: right;
+ .vote{
+     padding: 0 30px 0 0;
+     font-size: 20px;
+     text-decoration: none !important;
+     color: black;
  }
+.vote:hover{
+    color: red;
+}
+.col-2 p{
+    padding-top: 10px;
+    margin-bottom: 0;
+}
+.col-3 div{
+    padding-top: 5px;
+}

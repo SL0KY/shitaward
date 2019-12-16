@@ -2,6 +2,9 @@ class WebsitesController < ApplicationController
 
   def index
     @websites = Website.all
+    if %w[asc desc].include?(params[:upvotes])
+      @websites = @websites.order({upvotes_count: params[:upvotes]})
+    end
   end
 
   def show
@@ -35,8 +38,13 @@ class WebsitesController < ApplicationController
   end
 
   def destroy
-    @website = Website.find_by(id: params[:id])
-    @website.destroy
+    website = Website.find_by(id: params[:id])
+    if website.destroy
+      flash[:success] = 'Le record à bien été supprimé'
+    else
+      flash[:error] = 'Impossible de supprimer ce website'
+    end
+    redirect_to websites_url
   end
 
   private

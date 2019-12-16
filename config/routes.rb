@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :websites
-  delete '/websites/:id', to: 'websites#destroy'
-
+  resources :websites do
+    resources :votes, only: [:create]
+  end
 end

@@ -1,12 +1,39 @@
-<%= link_to 'Ajouter un site', '/websites/new', :class => "btn" %>
-<ul class="website_ul">
-  <% @websites.each do |website| %>
-    <li class="website_li">
-      <%= website.name %>
-      <div>
-        <%= link_to 'Edition', edit_website_url(website), :class => "btn" %>
-        <%= link_to 'Supprimer', website_path(website), :confirm  => 'Es tu sûr ?', method: :delete, :class => "btn" %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<div class="container-fluid">
+  <div class="row pt-2">
+    <div class="col-12">
+      <%= link_to 'Ajouter un site', new_website_path, :class => "btn btn-primary" %>
+      <%= link_to 'Les sites les plus pourris', websites_path(upvotes: :desc), :class => "btn btn-primary" %>
+      <%= link_to 'Les sites les moins pourris', websites_path(upvotes: :asc), :class => "btn btn-primary" %>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <ul class="row p-2">
+    <% @websites.each do |website| %>
+      <li class="website_li col-12 col-lg-6">
+        <div class="row">
+          <div class="col-2">
+            <p><%= website.name %></p>
+          </div>
+          <div class="col-3">
+            <div>
+              <%= website.upvotes_count %>
+              <%= link_to website_votes_url(website, vote: { type: 'Upvote' }), method: :post, :class => 'vote' do %>
+                <i class="far fa-thumbs-up"></i>
+              <% end %>
+              <!--<%= link_to website_votes_url(website, vote: { type: 'Downvote' }), method: :post, :class => 'vote' do %>
+                <i class="far fa-thumbs-down"></i>
+              <% end %>-->
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="float-right">
+              <%= link_to 'Edition', edit_website_url(website), :class => "btn btn-warning" %>
+              <%= link_to 'Supprimer', website_path(website), method: :delete, :class => "btn btn-danger" %>
+            </div>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

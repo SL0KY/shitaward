@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_155103) do
+ActiveRecord::Schema.define(version: 2019_12_16_160230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "votes", force: :cascade do |t|
+    t.string "type"
+    t.bigint "website_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["website_id"], name: "index_votes_on_website_id"
+  end
 
   create_table "websites", force: :cascade do |t|
     t.string "url"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "upvotes_count", default: 0
   end
 
 end
